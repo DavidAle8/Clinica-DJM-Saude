@@ -11,13 +11,13 @@ return new class extends Migration{
     public function up(): void{
 
         Schema::create('procedimentos', function (Blueprint $table) {
-            
+
             $table->integer('codigo')->primary();
             $table->string('status',15);
             $table->string('resultado',45);
             $table->enum('tipo', ['Emergência', 'Cirurgia', 'Terapêutico','Diagnóstico','Estético']);
-            $table->string('descricao', 45);
-            $table->string('preparacao', 45);
+            $table->string('descricao', 45)->nullable();
+            $table->string('preparacao', 45)->nullable();
 
         });
     }

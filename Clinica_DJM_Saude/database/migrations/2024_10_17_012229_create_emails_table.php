@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('emails', function (Blueprint $table) {
 
-            $table->string('emails',45);
+            $table->string('email',45);
             $table->string('cpf',14);
-            $table->primary(['emails', 'cpf']);
+            $table->primary(['email', 'cpf']);
             
         });
     }
