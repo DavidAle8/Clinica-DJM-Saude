@@ -1,11 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Clinica;
 
-// Route::get('/',[...::class,'home']);
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [Clinica::class, 'Menu']);
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 
 
