@@ -20,3 +20,4 @@ Route::get('/', function () {
 //php artisan make:migration create_events_table - cria uma tabela. Neste caso "events_table" é o nome da tabela
 //php artisan migrate:status - vê o status das migrations ou da tabela
 //php artisan make:add_*nome do campo que deseja adicionar na tabela*_to_*tabela qual vai ter o campo adicionado dentro dela*
+//...
