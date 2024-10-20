@@ -14,4 +14,10 @@ class Equipamento extends Model{
         'equipamento',
         'codigo'
     ];
+
+    public function procedimento(){
+
+        return $this->belongsTo(Procedimento::class);
+
+    }
 }

@@ -17,4 +17,17 @@ class Medico extends Model{
         'salario'
 
     ];
+
+    public function emails(){
+
+        return $this->hasMany(Email::class);
+
+    }
+
+    public function telefones(){
+
+        return $this->hasMany(Telefone::class);
+
+    }
+
 }

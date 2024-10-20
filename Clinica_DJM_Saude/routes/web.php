@@ -1,15 +1,16 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Clinica;
+use App\Http\Controllers\MedicoController;
 
-Route::get('/', [Clinica::class, 'Menu']);
+Route::get('/', [MedicoController::class, 'Menu']);
+Route::post([MedicoController::class, 'Create']);
 
 // Route::get('/', function () {
 //     return view('welcome');
 // });
 
-
+// http://127.0.0.1:8000
 
 //php artisan serve - roda o servidor
 //php artisan migrate - cria algumas tabelas base do laravel
@@ -18,7 +19,7 @@ Route::get('/', [Clinica::class, 'Menu']);
 //php artisan migrate:fresh - deleta todas as tabelas e roda as migrates novamente (cuidado para não apagar dados já existentes) (Faz isso quando vc coloca novos campos na tabela, pois ele atualiza a tabela)
 //php artisan migrate:rollback - Pode remover um campo da tabela
 //php artisan migrate:reset - desfaz as migrations
-//php artisan migrate:refresh - Faz rodar todas as migratios novamente. Faz o rollback e migrate logo sem seguida
+//php artisan migrate:refresh - Faz rodar todas as migratios novamente. Faz o rollback e migrate logo em seguida
 //php artisan make:migration create_events_table - cria uma tabela. Neste caso "events_table" é o nome da tabela
 //php artisan migrate:status - vê o status das migrations ou da tabela
 //php artisan make:add_*nome do campo que deseja adicionar na tabela*_to_*tabela qual vai ter o campo adicionado dentro dela*

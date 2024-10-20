@@ -15,7 +15,7 @@ return new class extends Migration
 
             $table->string('equipamento', 45);
             $table->integer('codigo');
-            $table->primary(['equipamento', 'codigo']);
+            $table->foreign('codigo')->references('codigo')->on('procedimentos')->onDelete('cascade');
         });
     }
 

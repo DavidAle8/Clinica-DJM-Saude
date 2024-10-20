@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('telefones', function (Blueprint $table) {
             $table->string('telefone',11);
             $table->string('cpf',14);
-            $table->primary(['telefone', 'cpf']);
+            $table->foreign('cpf')->references('cpf')->on('medicos')->onDelete('cascade');
         });
     }
 

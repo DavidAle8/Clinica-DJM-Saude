@@ -9,13 +9,13 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
-    {
+    public function up(): void{
+        
         Schema::create('emails', function (Blueprint $table) {
 
             $table->string('email',45);
             $table->string('cpf',14);
-            $table->primary(['email', 'cpf']);
+            $table->foreign('cpf')->references('cpf')->on('medicos')->onDelete('cascade');
             
         });
     }
@@ -28,3 +28,13 @@ return new class extends Migration
         Schema::dropIfExists('emails');
     }
 };
+
+
+
+// Schema::create('emails', function (Blueprint $table) {
+
+//     $table->string('email',45);
+//     $table->string('cpf',14);
+//     $table->primary(['email', 'cpf']);
+    
+// });

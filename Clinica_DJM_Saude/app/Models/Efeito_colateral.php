@@ -13,4 +13,10 @@ class Efeito_colateral extends Model{
         'efeito_colateral',
         'codigo'
     ];
+
+    public function procedimento(){
+
+        return $this->belongsTo(Procedimento::class);
+
+    }
 }

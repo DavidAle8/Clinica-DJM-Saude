@@ -15,7 +15,7 @@ return new class extends Migration
 
             $table->string('efeito_colateral', 45);
             $table->integer('codigo');
-            $table->primary(['efeito_colateral', 'codigo']);
+            $table->foreign('codigo')->references('codigo')->on('procedimentos')->onDelete('cascade');
         });
     }
 

@@ -13,4 +13,10 @@ class Email extends Model{
         'email',
         'cpf'
     ];
+    
+    public function medico(){
+
+        return $this->belongsTo(Medico::class);
+
+    }
 }

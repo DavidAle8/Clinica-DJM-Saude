@@ -13,4 +13,10 @@ class Telefone extends Model{
         'telefone',
         'cpf'
     ];
+
+    public function medico(){
+
+        return $this->belongsTo(Medico::class);
+
+    }
 }
