@@ -44,34 +44,49 @@ class MedicoController extends Controller{
         return response();
     }
 
-    public function update(Request $request, $id){
+    public function update(Request $request){
 
-        $medico = $request->validate([
+        $medico = Medico::find($request->id);
 
-            'cpf' => 'required|string|max:14',
-            'primeiro_nome' => 'required|string|max:45',
-            'sobrenome' => 'required|string|max:45',
-            'crm' => 'required|string|max:5',
-            'area' => 'required|string|max:20',
-            'salario' => 'required|float',
-            'data_nascimento' => 'required|date',
-            'sexo' => 'required|char|max:1',
+        $medico->cpf = $request->cpf;
+        $medico->primeiro_nome = $request->primeiro_nome;
+        $medico->sobrenome = $request->sobrenome;
+        $medico->crm = $request->crm;
+        $medico->area = $request->area;
+        $medico->salario = $request->salario;
+        $medico->data_nascimento = $request->data_nascimento;
+        $medico->sexo = $request->sexo;
 
-        ]);
+   //   $medico->emails()->delete;
 
-        $novoMedico = Medico::findOrFail($id);
-        $novoMedico->update($medico);
-        
-        return redirect()->route();
+        foreach($request->emails as $email){
+
+            $medico->emails()->create(["email" => $email]);
+
+        }
+
+        foreach($request->telefones as $telefone){
+
+            $medico->telefones()->create(["telefone" => $telefone]);
+
+        }
+
+        $medico->save();
+
+        return response("Tudo certo", 200); 
     }
 
-    public function destroy($id){
 
-        $medico = Medico::findOrFail($id);
+    public function delete(Request $request){
+
+        $medico = Medico::find($request->id);
 
         $medico->delete();
+        $medico->telefones()->delete;
+        $medico->emails()->delete;
 
-        return redirect()->route();
+        return response("medico",200);
+        
     }  
 
 }

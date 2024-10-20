@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MedicoController;
 
-Route::get('/', [MedicoController::class, 'Menu']);
 Route::post([MedicoController::class, 'Create']);
 
 // Route::get('/', function () {
