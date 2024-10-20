@@ -2,9 +2,19 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MedicoController;
+use App\Http\Controllers\ProcedimentoController;
 
-Route::post([MedicoController::class, 'Create']);
+Route::post('Store_Medico',[MedicoController::class, 'store']);
+Route::get('Index_Medico',[MedicoController::class, 'index']);
+Route::put('Update_Medico',[MedicoController::class, 'update']);
+Route::delete('Delete_Medico',[MedicoController::class, 'delete']);
 
+Route::post('Store_Procedimento',[ProcedimentoController::class, 'store']);
+Route::get('Index_Procedimento',[ProcedimentoController::class, 'index']);
+Route::put('Update_Procedimento',[ProcedimentoController::class, 'update']);
+Route::delete('Delete_Procedimento',[ProcedimentoController::class, 'delete']);
+
+    
 // Route::get('/', function () {
 //     return view('welcome');
 // });
