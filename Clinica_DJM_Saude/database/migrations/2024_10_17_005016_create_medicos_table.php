@@ -12,14 +12,15 @@ return new class extends Migration{
 
         Schema::create('medicos', function (Blueprint $table) {
 
-            $table->string('cpf',14)->primary();
+            $table->unsignedBigInteger('cpf')->primary();
             $table->string('primeiro_nome',45);
             $table->string('sobrenome',45);
-            $table->string('crm',5);
+            $table->string('crm',10);
             $table->string('area',20);
             $table->float('salario');
             $table->date('data_nascimento')->nullable();
             $table->char('sexo')->nullable();
+            
         });
     }
 

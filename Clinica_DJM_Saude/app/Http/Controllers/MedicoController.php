@@ -22,31 +22,31 @@ class MedicoController extends Controller{
             "sexo" => $request->sexo
         ]);
 
-        foreach($request->emails as $email){
+    //    return response(["OK"], 200);
+    //    return response(["OK"], 200)->json('Relação criada com sucesso!');
+        return response()->json([
 
-            $medico->emails()->create(['email' => $email]);
-
-        }
-
-        foreach($request->telefones as $telefone){
-
-            $medico->telefones()->create(['telefone' => $telefone]);
-
-        }
-
-        return response(["OK"], 200);
+            'message' => 'Relação criada com sucesso!',
+            'medico' => $medico
+        ],200);
     }
 
     public function index(){
         
-        $medico = Medico::with(["emails","telefones"])->get(); 
+        $medico = Medico::get(); 
 
-        return response();
+     // return response(["OK"], 200);
+    //  return response()->json(['aviso' => 'Usuário cadastrado com sucesso!'], 200);
+
+        return response()->json([
+            'message' => 'Relação criada com sucesso!',
+            'medico' => $medico 
+        ]);
     }
 
-    public function update(Request $request){
+    public function update(Request $request, Medico $cpf){
 
-        $medico = Medico::find($request->id);
+        $medico = Medico::find($request->$cpf);
 
         $medico->cpf = $request->cpf;
         $medico->primeiro_nome = $request->primeiro_nome;
@@ -57,23 +57,16 @@ class MedicoController extends Controller{
         $medico->data_nascimento = $request->data_nascimento;
         $medico->sexo = $request->sexo;
 
-   //   $medico->emails()->delete;
-
-        foreach($request->emails as $email){
-
-            $medico->emails()->create(["email" => $email]);
-
-        }
-
-        foreach($request->telefones as $telefone){
-
-            $medico->telefones()->create(["telefone" => $telefone]);
-
-        }
-
         $medico->save();
 
-        return response("Tudo certo", 200); 
+      //  return response("Tudo certo", 200); 
+        return response()->json([
+            
+            'message' => 'Relação atualizada com sucesso!',
+            'medico' => $medico 
+
+        ],200);
+
     }
 
 
@@ -82,10 +75,14 @@ class MedicoController extends Controller{
         $medico = Medico::find($request->id);
 
         $medico->delete();
-        $medico->telefones()->delete;
-        $medico->emails()->delete;
 
-        return response("medico",200);
+        return response()->json([
+        
+            'message' => 'Relação removida com sucesso!',
+            'medico' => $medico
+
+        ],200);
+          
         
     }  
 

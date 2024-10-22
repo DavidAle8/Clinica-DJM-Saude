@@ -20,26 +20,25 @@ class ProcedimentoController extends Controller{
             
         ]);
 
-        foreach($request->equipamentos as $equipamento){
+        return response()->json([
+        
+            'message' => 'Relação criada com sucesso!',
+            'procedimento' => $procedimento 
 
-            $procedimento->equipamentos()->create(['equipamento' => $equipamento]);
-
-        }
-
-        foreach($request->efeitos_colaterais as $efeito_colateral){
-
-            $procedimento->efeitos_colaterais()->create(['efeito_colateral' => $efeito_colateral]);
-
-        }
-
-        return response(["OK"], 200);
+        ],200);
     }
 
     public function index(){
         
-        $procedimento = Procedimento::with(["equipamentos","efeitos_colaterais"])->get(); 
+        $procedimento = Procedimento::get(); 
 
-        return response();
+        return response()->json([
+        
+            'message' => 'Relação criada com sucesso!',
+            'procedimento' => $procedimento 
+
+        ],200);
+
     }
 
     public function update(Request $request){
@@ -53,21 +52,15 @@ class ProcedimentoController extends Controller{
         $procedimento->descricao = $request->descricao;
         $procedimento->preparacao = $request->preparacao;
 
-        foreach($request->equipamentos as $equipamento){
-
-            $procedimento->equipamentos()->create(["equipamento" => $equipamento]);
-
-        }
-
-        foreach($request->efeitos_colaterais as $efeito_colateral){
-
-            $procedimento->efeitos_colaterais()->create(["efeito_colateral" => $efeito_colateral]);
-
-        }
-
         $procedimento->save();
 
-        return response("Tudo certo", 200);
+        return response()->json([
+        
+            'message' => 'Relação criada com sucesso!',
+            'procedimento' => $procedimento 
+
+        ],200);
+
     }
 
 
@@ -76,10 +69,13 @@ class ProcedimentoController extends Controller{
         $procedimento = Procedimento::find($request->id);
 
         $procedimento->delete();
-        $procedimento->efeitos_colaterais()->delete;
-        $procedimento->equipamentos()->delete;
 
-        return response("procedimento",200);
+        return response()->json([
+        
+            'message' => 'Relação criada com sucesso!',
+            'procedimento' => $procedimento 
+
+        ],200);
         
     }  
 }

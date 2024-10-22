@@ -3,16 +3,22 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MedicoController;
 use App\Http\Controllers\ProcedimentoController;
+use App\Http\Controllers\FazerController;
 
-Route::post('Store_Medico',[MedicoController::class, 'store']);
-Route::get('Index_Medico',[MedicoController::class, 'index']);
-Route::put('Update_Medico',[MedicoController::class, 'update']);
-Route::delete('Delete_Medico',[MedicoController::class, 'delete']);
+Route::post('/medicos_post',[MedicoController::class, 'store']);
+Route::get('/medicos_get',[MedicoController::class, 'index']);
+Route::put('/medicos/put/{cpf}',[MedicoController::class, 'update']); // http://127.0.0.1:8000/medicos/put/7663314741
+Route::delete('/medicos/delete/{cpf}',[MedicoController::class, 'delete']);
 
-Route::post('Store_Procedimento',[ProcedimentoController::class, 'store']);
-Route::get('Index_Procedimento',[ProcedimentoController::class, 'index']);
-Route::put('Update_Procedimento',[ProcedimentoController::class, 'update']);
-Route::delete('Delete_Procedimento',[ProcedimentoController::class, 'delete']);
+Route::post('/procedimentos_post',[ProcedimentoController::class, 'store']);
+Route::get('/procedimentos_get',[ProcedimentoController::class, 'index']);
+Route::put('/procedimentos/put/{id}',[ProcedimentoController::class, 'update']);
+Route::delete('/procedimentos/delete/{id}',[ProcedimentoController::class, 'delete']);
+
+Route::get('/fazer_get', [FazerController::class, 'index']);
+Route::post('/fazer_post', [FazerController::class, 'store']);
+Route::put('/fazer/put/{cpf}/{codigo}', [FazerController::class, 'update']);
+Route::delete('/fazer/delete/{cpf}/{codigo}', [FazerController::class, 'destroy']);
 
     
 // Route::get('/', function () {
@@ -20,6 +26,8 @@ Route::delete('Delete_Procedimento',[ProcedimentoController::class, 'delete']);
 // });
 
 // http://127.0.0.1:8000
+
+
 
 //php artisan serve - roda o servidor
 //php artisan migrate - cria algumas tabelas base do laravel

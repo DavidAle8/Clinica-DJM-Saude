@@ -14,18 +14,4 @@ class Procedimento extends Model{
         'resultado',
         'tipo'
     ];
-
-    public function equipamentos(){
-
-        return $this->hasMany(Equipamento::class);
-
-    }
-
-    public function efeitos_colaterais(){
-
-        return $this->hasMany(Efeito_colateral::class);
-
-    }
-    
-    
 }

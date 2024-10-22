@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
 class Fazer extends Model{
 
@@ -16,4 +17,15 @@ class Fazer extends Model{
         'status',
         'data'
     ];
+
+    public function medicos(){
+
+        return $this->belongsTo(Medico::class,'cpf','cpf');
+    }
+
+    public function procedimentos(){
+
+        return $this->belongsTo(Procedimento::class,'coedigo','coedigo');
+    }
 }
+
