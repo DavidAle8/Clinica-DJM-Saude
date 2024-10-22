@@ -21,7 +21,8 @@ class ProcedimentoController extends Controller{
         ]);
 
         return response()->json([
-        
+
+            'status'=>true,
             'message' => 'Relação criada com sucesso!',
             'procedimento' => $procedimento 
 
@@ -30,10 +31,11 @@ class ProcedimentoController extends Controller{
 
     public function index(){
         
-        $procedimento = Procedimento::get(); 
+        $procedimento = Procedimento::all(); 
 
         return response()->json([
-        
+            
+            'status'=>true,
             'message' => 'Relação criada com sucesso!',
             'procedimento' => $procedimento 
 
@@ -41,21 +43,32 @@ class ProcedimentoController extends Controller{
 
     }
 
-    public function update(Request $request){
+    public function update(Request $request, Procedimento $procedimento){
 
-        $procedimento = Procedimento::find($request->id);
+        // $procedimento = Procedimento::find($request->id);
 
-        $procedimento->codigo = $request->codigo;
-        $procedimento->status = $request->status;
-        $procedimento->resultado = $request->resultado;
-        $procedimento->tipo = $request->tipo;
-        $procedimento->descricao = $request->descricao;
-        $procedimento->preparacao = $request->preparacao;
+        // $procedimento->codigo = $request->codigo;
+        // $procedimento->status = $request->status;
+        // $procedimento->resultado = $request->resultado;
+        // $procedimento->tipo = $request->tipo;
+        // $procedimento->descricao = $request->descricao;
+        // $procedimento->preparacao = $request->preparacao;
 
-        $procedimento->save();
+        // $procedimento->save();
+
+        $data = $request->only([
+
+            'codigo',
+            'status',
+            'resultado',
+            'tipo',
+            'descricao',
+            'preparacao'
+
+        ]);
 
         return response()->json([
-        
+            'status' => true,
             'message' => 'Relação criada com sucesso!',
             'procedimento' => $procedimento 
 
@@ -64,14 +77,12 @@ class ProcedimentoController extends Controller{
     }
 
 
-    public function delete(Request $request){
-
-        $procedimento = Procedimento::find($request->id);
+    public function delete(Procedimento $procedimento){
 
         $procedimento->delete();
 
         return response()->json([
-        
+            'status' => true,
             'message' => 'Relação criada com sucesso!',
             'procedimento' => $procedimento 
 

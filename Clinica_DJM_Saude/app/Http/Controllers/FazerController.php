@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Medico;
 use App\Models\Fazer;
 use Illuminate\Http\Request;
 
 class FazerController extends Controller{
 
     public function store(Request $request){
+
+     // $medico = Medico::where('cpf')->first();
 
         $fazer = Fazer::create([
 
@@ -19,35 +22,53 @@ class FazerController extends Controller{
 
         ]);
 
-        return response(["OK"], 200);
+        return response()->json([
+            
+            'status'=>true,
+            'message' => 'Relação criada com sucesso!',
+            'fazer' => $fazer
+
+        ],201);
     }
 
     public function index(){
         
-        $fazer = Fazer::with(["medico","procedimentos"])->get(); 
+    //  $fazer = Fazer::with(["medico","procedimentos"])->get(); 
+        $fazer = Fazer::get();
 
         return response(["OK"], 200);
     }
 
-    public function update(Request $request, $cpf, $codigo){
+    public function update(Request $request, $id){
 
-
-        $fazer = Fazer::where('cpf',$cpf)->where('codigo',$codigo)->firstOrFail();
+        $fazer = Fazer::find($id);
         $fazer->update($request->only('data','status','medico_responsavel'));
+        // $fazer = Fazer::where('cpf',$cpf)->where('codigo',$codigo)->firstOrFail();
+        
 
-        return response("Tudo certo", 200); 
+        return response()->json([
+            
+            'status'=>true,
+            'message' => 'Relação atualizada com sucesso!',
+            'fazer' => $fazer
+
+        ],201); 
     }
 
 
-    public function delete($cpf, $codigo){
+    public function delete($id){
 
-  //    $fazer = Fazer::find($request->id);
-
-        $fazer = Fazer::where('cpf',$cpf)->where('codigo',$codigo)->firstOrFail();
+        $fazer = Fazer::find($id);
         
         $fazer->delete();
 
-        return response("fazer",200);
+        return response()->json([
+            
+            'status'=>true,
+            'message' => 'Relação movida com sucesso!',
+            'fazer' => $fazer
+
+        ],201); 
         
     } 
 }

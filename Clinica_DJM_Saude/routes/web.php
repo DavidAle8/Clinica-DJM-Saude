@@ -5,8 +5,8 @@ use App\Http\Controllers\MedicoController;
 use App\Http\Controllers\ProcedimentoController;
 use App\Http\Controllers\FazerController;
 
-Route::post('/medicos_post',[MedicoController::class, 'store']);
-Route::get('/medicos_get',[MedicoController::class, 'index']);
+Route::post('/medicos',[MedicoController::class, 'store']);
+Route::get('/medicos',[MedicoController::class, 'index']);
 Route::put('/medicos/put/{cpf}',[MedicoController::class, 'update']); // http://127.0.0.1:8000/medicos/put/7663314741
 Route::delete('/medicos/delete/{cpf}',[MedicoController::class, 'delete']);
 
@@ -26,7 +26,6 @@ Route::delete('/fazer/delete/{cpf}/{codigo}', [FazerController::class, 'destroy'
 // });
 
 // http://127.0.0.1:8000
-
 
 
 //php artisan serve - roda o servidor

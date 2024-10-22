@@ -17,4 +17,9 @@ class Medico extends Model{
         'salario'
 
     ];
+
+    protected $except = [
+        '/medicos',  // Adicione a rota aqui para desativar a verificação de CSRF
+    ];
+    
 }

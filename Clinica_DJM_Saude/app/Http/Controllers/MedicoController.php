@@ -25,44 +25,66 @@ class MedicoController extends Controller{
     //    return response(["OK"], 200);
     //    return response(["OK"], 200)->json('Relação criada com sucesso!');
         return response()->json([
-
+            
+            'status'=>true,
             'message' => 'Relação criada com sucesso!',
             'medico' => $medico
-        ],200);
+
+        ],201);
     }
 
     public function index(){
         
-        $medico = Medico::get(); 
+        $medico = Medico::all(); 
 
      // return response(["OK"], 200);
     //  return response()->json(['aviso' => 'Usuário cadastrado com sucesso!'], 200);
 
         return response()->json([
+            'status' => true,
             'message' => 'Relação criada com sucesso!',
             'medico' => $medico 
         ]);
     }
 
-    public function update(Request $request, Medico $cpf){
+    public function update(Request $request, Medico $medico){
 
-        $medico = Medico::find($request->$cpf);
+        // $medico = Medico::find($request->$cpf);
 
-        $medico->cpf = $request->cpf;
-        $medico->primeiro_nome = $request->primeiro_nome;
-        $medico->sobrenome = $request->sobrenome;
-        $medico->crm = $request->crm;
-        $medico->area = $request->area;
-        $medico->salario = $request->salario;
-        $medico->data_nascimento = $request->data_nascimento;
-        $medico->sexo = $request->sexo;
+        // $medico->cpf = $request->cpf;
+        // $medico->primeiro_nome = $request->primeiro_nome;
+        // $medico->sobrenome = $request->sobrenome;
+        // $medico->crm = $request->crm;
+        // $medico->area = $request->area;
+        // $medico->salario = $request->salario;
+        // $medico->data_nascimento = $request->data_nascimento;
+        // $medico->sexo = $request->sexo;
 
-        $medico->save();
+        // $medico->save();
 
-      //  return response("Tudo certo", 200); 
-        return response()->json([
+        $dados = $request->only([
             
-            'message' => 'Relação atualizada com sucesso!',
+          'cpf',
+          'primeiro_nome' ,
+          'sobrenome',
+          'crm' ,
+          'area',
+          'salario',
+          'data_nascimento',
+          'sexo' 
+
+        ]);
+
+        if(!empty($dados)){
+
+            $medico->update($dados);
+
+        }
+
+
+        return response()->json([
+            'status' => true,
+            'message' => 'Médico atualizado com sucesso!',
             'medico' => $medico 
 
         ],200);
@@ -70,20 +92,16 @@ class MedicoController extends Controller{
     }
 
 
-    public function delete(Request $request){
-
-        $medico = Medico::find($request->id);
+    public function delete(Medico $medico){
 
         $medico->delete();
 
         return response()->json([
-        
-            'message' => 'Relação removida com sucesso!',
+            'status' => true,
+            'message' => 'Médico removido com sucesso!',
             'medico' => $medico
 
-        ],200);
-          
-        
+        ],200);    
     }  
 
 }

@@ -25,7 +25,7 @@ class Fazer extends Model{
 
     public function procedimentos(){
 
-        return $this->belongsTo(Procedimento::class,'coedigo','coedigo');
+        return $this->belongsTo(Procedimento::class,'codigo','codigo');
     }
 }
 
