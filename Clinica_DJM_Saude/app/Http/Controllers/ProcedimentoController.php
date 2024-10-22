@@ -11,7 +11,7 @@ class ProcedimentoController extends Controller{
 
         $procedimento = Procedimento::create([
 
-            "codigo" => $request->codigo,
+         //   "codigo" => $request->codigo,
             "status" => $request->status,
             "resultado" => $request->resultado,
             "tipo" => $request->tipo,

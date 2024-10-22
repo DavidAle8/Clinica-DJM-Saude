@@ -12,6 +12,16 @@ class FazerController extends Controller{
 
      // $medico = Medico::where('cpf')->first();
 
+        $exists = Fazer::where('cpf', $request->cpf)->where('codigo', $request->codigo)->exists();
+
+        if ($exists) {
+
+            return response()->json([
+            'status' => false,
+            'message' => 'Relação já existe!',
+            ], 409); // 409 Conflict
+        }
+
         $fazer = Fazer::create([
 
             "cpf" => $request->cpf,

@@ -8,10 +8,15 @@ class Procedimento extends Model{
     
     protected $primaryKey = 'codigo';
 
-    protected $fillable = [
+    // Desativa os timestamps automáticos
+    public $timestamps = false;
 
+    protected $fillable = [
+        
         'status',
         'resultado',
-        'tipo'
+        'tipo',
+        'descricao',
+        'preparacao'
     ];
 }

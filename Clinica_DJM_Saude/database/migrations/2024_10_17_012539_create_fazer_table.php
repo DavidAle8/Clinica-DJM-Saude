@@ -9,18 +9,19 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
-    {
+    public function up(): void{
+
         Schema::create('fazer', function (Blueprint $table) {
 
             $table->unsignedBigInteger('cpf');
             $table->integer('codigo');
-            $table->string('medico_responsavel',45);
-            $table->string('status',15);
+            $table->string('medico_responsavel', 45);
+            $table->string('status', 15);
             $table->date('data');
+            $table->timestamps(); // Adiciona as colunas created_at e updated_at
             $table->foreign('codigo')->references('codigo')->on('procedimentos')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('cpf')->references('cpf')->on('medicos')->onDelete('cascade')->onUpdate('cascade');
-            $table->primary(['cpf','codigo']);
+            $table->primary(['cpf', 'codigo']);
         });
     }
 
@@ -31,4 +32,5 @@ return new class extends Migration
 
         Schema::dropIfExists('fazer');
     }
+    
 };

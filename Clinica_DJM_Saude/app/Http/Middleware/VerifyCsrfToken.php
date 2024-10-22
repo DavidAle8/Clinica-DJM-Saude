@@ -12,8 +12,9 @@ class VerifyCsrfToken extends Middleware{
      */
     protected $except = [
         
-        'api/*',  // Exclui todas as rotas sob o prefixo 'api'
-        'medicos', // Exclui a rota /medicos
-        'procedimentos/*', // Exclui todas as rotas sob o prefixo procedimentos
+        'api/*',
+        'medicos', 
+        'procedimentos/*',
+        'fazer/*',  // Exclui todas as rotas sob o prefixo fazer
     ];
 }
