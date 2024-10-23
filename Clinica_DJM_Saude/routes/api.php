@@ -9,18 +9,18 @@ use App\Http\Controllers\FazerController;
 
 Route::post('/medicos',[MedicoController::class, 'store']);
 Route::get('/medicos',[MedicoController::class, 'index']);
-Route::put('/medicos/{cpf}',[MedicoController::class, 'update']); // http://127.0.0.1:8000/medicos/put/7663314741
-Route::delete('/medicos/{cpf}',[MedicoController::class, 'delete']);
+Route::put('/medicos/{medico}',[MedicoController::class, 'update']); // http://127.0.0.1:8000/medicos/put/7663314741
+Route::delete('/medicos/{medico}',[MedicoController::class, 'destroy']);
 
 Route::post('/procedimentos',[ProcedimentoController::class, 'store']);
 Route::get('/procedimentos',[ProcedimentoController::class, 'index']);
-Route::put('/procedimentos/{cpf}',[ProcedimentoController::class, 'update']);
-Route::delete('/procedimentos/{cpf}',[ProcedimentoController::class, 'delete']);
+Route::put('/procedimentos/{procedimento}',[ProcedimentoController::class, 'update']);
+Route::delete('/procedimentos/{procedimento}',[ProcedimentoController::class, 'destroy']);
 
 Route::get('/fazer', [FazerController::class, 'index']);
 Route::post('/fazer', [FazerController::class, 'store']);
-Route::put('/fazer/{cpf}/{codigo}', [FazerController::class, 'update']);
-Route::delete('/fazer/{cpf}/{codigo}', [FazerController::class, 'destroy']);
+Route::put('/fazer/{id}', [FazerController::class, 'update']);
+Route::delete('/fazer/{id}', [FazerController::class, 'destroy']);
 
 
 Route::get('/user', function (Request $request) {

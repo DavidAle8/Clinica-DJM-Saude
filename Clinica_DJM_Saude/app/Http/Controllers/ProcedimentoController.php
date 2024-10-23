@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Procedimento;
+use Illuminate\Support\Facades\DB;
 
 class ProcedimentoController extends Controller{
 
     public function store(Request $request){
+
+        DB::beginTransaction();
 
         $procedimento = Procedimento::create([
 
@@ -19,6 +22,8 @@ class ProcedimentoController extends Controller{
             "preparacao" => $request->preparacao
             
         ]);
+
+        DB::commit();
 
         return response()->json([
 
@@ -56,6 +61,8 @@ class ProcedimentoController extends Controller{
 
         // $procedimento->save();
 
+        DB::beginTransaction();
+
         $data = $request->only([
 
             'codigo',
@@ -67,7 +74,15 @@ class ProcedimentoController extends Controller{
 
         ]);
 
+        if(!empty($data)){
+
+            $procedimento->update($data);
+        }
+
+        DB::commit();
+
         return response()->json([
+
             'status' => true,
             'message' => 'Relação criada com sucesso!',
             'procedimento' => $procedimento 
@@ -77,11 +92,12 @@ class ProcedimentoController extends Controller{
     }
 
 
-    public function delete(Procedimento $procedimento){
+    public function destroy(Procedimento $procedimento){
 
         $procedimento->delete();
 
         return response()->json([
+
             'status' => true,
             'message' => 'Relação criada com sucesso!',
             'procedimento' => $procedimento 
