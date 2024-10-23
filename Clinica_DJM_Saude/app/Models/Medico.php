@@ -13,8 +13,8 @@ class Medico extends Model{
 
     // Campos que podem ser preenchidos em massa
     protected $fillable = [
-        
-        'cpf', // Adicione o cpf aqui
+
+        'cpf',
         'primeiro_nome',
         'sobrenome',
         'crm',

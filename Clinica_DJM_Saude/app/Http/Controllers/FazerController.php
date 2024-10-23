@@ -77,7 +77,6 @@ class FazerController extends Controller{
         ]);
 
         $fazer->update($validatedData);
-        // $fazer = Fazer::where('cpf',$cpf)->where('codigo',$codigo)->firstOrFail();
         
         DB::commit();
 

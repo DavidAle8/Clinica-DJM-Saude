@@ -18,6 +18,7 @@ return new class extends Migration{
             $table->enum('tipo', ['Emergência', 'Cirurgia', 'Terapêutico', 'Diagnóstico', 'Estético']);
             $table->string('descricao', 45)->nullable();
             $table->string('preparacao', 45)->nullable();
+            
         });
         
     }

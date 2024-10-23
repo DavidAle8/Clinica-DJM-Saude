@@ -27,15 +27,5 @@ class Fazer extends Model {
         return $this->belongsTo(Procedimento::class, 'codigo', 'codigo');
     }
 
-    // Método para definir a chave primária composta
-    // public function getKey() {
-    //     return [$this->attributes['cpf'], $this->attributes['codigo']];
-    // }
-
-    // public function setKeysForSaveQuery($query) {
-    //     $query->where('cpf', $this->getAttribute('cpf'));
-    //     $query->where('codigo', $this->getAttribute('codigo'));
-    //     return $query;
-    // }
 }
 

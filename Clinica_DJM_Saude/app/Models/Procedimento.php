@@ -12,11 +12,12 @@ class Procedimento extends Model{
     public $timestamps = false;
 
     protected $fillable = [
-        
+
         'status',
         'resultado',
         'tipo',
         'descricao',
         'preparacao'
+        
     ];
 }

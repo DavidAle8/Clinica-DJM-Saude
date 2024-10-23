@@ -50,16 +50,6 @@ class ProcedimentoController extends Controller{
 
     public function update(Request $request, Procedimento $procedimento){
 
-        // $procedimento = Procedimento::find($request->id);
-
-        // $procedimento->codigo = $request->codigo;
-        // $procedimento->status = $request->status;
-        // $procedimento->resultado = $request->resultado;
-        // $procedimento->tipo = $request->tipo;
-        // $procedimento->descricao = $request->descricao;
-        // $procedimento->preparacao = $request->preparacao;
-
-        // $procedimento->save();
 
         DB::beginTransaction();
 

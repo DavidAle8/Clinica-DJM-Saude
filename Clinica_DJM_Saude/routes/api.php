@@ -9,7 +9,7 @@ use App\Http\Controllers\FazerController;
 
 Route::post('/medicos',[MedicoController::class, 'store']);
 Route::get('/medicos',[MedicoController::class, 'index']);
-Route::put('/medicos/{medico}',[MedicoController::class, 'update']); // http://127.0.0.1:8000/medicos/put/7663314741
+Route::put('/medicos/{medico}',[MedicoController::class, 'update']); 
 Route::delete('/medicos/{medico}',[MedicoController::class, 'destroy']);
 
 Route::post('/procedimentos',[ProcedimentoController::class, 'store']);
@@ -26,6 +26,21 @@ Route::delete('/fazer/{id}', [FazerController::class, 'destroy']);
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
